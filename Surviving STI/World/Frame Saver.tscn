@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1hc3yxki4uph"]
+
+[ext_resource type="Script" uid="uid://dxjw8nhmh5fx4" path="res://World/frame_save.gd" id="1_dkw24"]
+
+[node name="FrameSaver" type="Node"]
+process_mode = 3
+script = ExtResource("1_dkw24")
+
+[node name="Timer" type="Timer" parent="."]

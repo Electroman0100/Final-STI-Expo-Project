@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh71g61cm8k44"]
+
+[ext_resource type="Script" uid="uid://chg0x7jq57xj1" path="res://pause_menu.gd" id="1_hdmo1"]
+[ext_resource type="Shader" uid="uid://kknmk2p8lu3v" path="res://pause_menu.gdshader" id="2_nwcfo"]
+[ext_resource type="Texture2D" uid="uid://cuvkrvnawdr2n" path="res://d0dbc158-b401-4571-b879-e3d7455c68ef.jpg" id="3_05uyy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwcfo"]
+shader = ExtResource("2_nwcfo")
+shader_parameter/amount = 2.555
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hdmo1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_nwcfo")
+layout_mode = 0
+offset_right = 639.0
+offset_bottom = 358.0
+color = Color(1, 1, 1, 0.435294)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(40.3525, 329.049)
+scale = Vector2(0.0238016, 0.0207145)
+texture = ExtResource("3_05uyy")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
